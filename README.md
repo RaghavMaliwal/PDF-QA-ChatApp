@@ -22,6 +22,33 @@ A web-based application that lets you upload PDF files and ask questions about t
 
 ---
 
+## Running Ollama Model Server Locally
+
+This project relies on Ollama to serve both the language model (e.g., `mistral`) and the embedding model (e.g., `nomic-embed-text`) locally. Follow these steps to set up and run the Ollama Models:
+
+### 1. Install Ollama
+
+Download and install Ollama from the [official website](https://ollama.com/) or use the following command for Linux:
+
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Verify the installation:
+```
+ollama --version
+```
+
+### 2. Download the Required Models
+
+Pull the language and embedding models you need. For example:
+```
+ollama pull mistral
+ollama pull nomic-embed-text
+```
+
+
+
 ## Getting Started
 
 ### Prerequisites
