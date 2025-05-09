@@ -1,0 +1,9 @@
+nltk
+fastapi
+tqdm
+scikit-learn
+langchain
+langchain-community
+langchain-ollama
+langchain-chroma
+uvicorn
