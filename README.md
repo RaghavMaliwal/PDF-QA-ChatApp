@@ -22,6 +22,19 @@ A web-based application that lets you upload PDF files and ask questions about t
 
 ---
 
+## Screenshots
+
+### Chat Interface
+![Chat UI](assets/Basic_UI.png)
+
+### Uploading a PDF
+![Uploading PDF](assets/Upload_Files.png)
+
+### Batchwise Upload of Chunks to ChromaDB
+![Uploading Chunks](assets/Backend.png)
+
+### Sample Answer with Source
+![Sample Answer](assets/Chat.png)
 ## Running Ollama Model Server Locally
 
 This project relies on Ollama to serve both the language model (e.g., `mistral`) and the embedding model (e.g., `nomic-embed-text`) locally. Follow these steps to set up and run the Ollama Models:
