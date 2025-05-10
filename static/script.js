@@ -25,7 +25,9 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
     const result = await res.json();
 
     // Show feedback in chat after upload is complete
-    chatBox.innerHTML += `<div class="text-center text-green-600">Uploaded: ${result.uploaded.join(", ")}</div>`;
+    chatBox.innerHTML += `<div class="text-center text-green-600">Uploaded: ${result.uploaded.join(
+      ", "
+    )}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
 
     console.log(`Files uploaded successfully: ${result.uploaded.join(", ")}`);
@@ -52,38 +54,30 @@ document.getElementById("chatForm").addEventListener("submit", async (e) => {
   chatBox.scrollTop = chatBox.scrollHeight;
 
   try {
-    const res = await fetch(
-      `http://localhost:8000/query/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question: userText })
-      }
-    );
+    const res = await fetch(`http://localhost:8000/query/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question: userText }),
+    });
     const data = await res.json();
 
     // Remove "Processing..." message before showing the response
-    document.querySelectorAll(".text-gray-600").forEach(el => el.remove());
+    document.querySelectorAll(".text-gray-600").forEach((el) => el.remove());
 
     // Display the AI answer
     chatBox.innerHTML += `<div class="text-left text-green-700"><strong>AI:</strong> ${data.response}</div>`;
 
-    // Display the sources of the answer
-    const sourcesDiv = document.createElement("div");
-    sourcesDiv.classList.add("text-left", "text-gray-600");
-    sourcesDiv.innerHTML = "<strong>Sources:</strong>";
+    if (data.sources && data.sources.length > 0) {
+      const sourcesDiv = document.createElement("div");
+      sourcesDiv.classList.add("text-left", "text-gray-600");
+      sourcesDiv.innerHTML =
+        "<strong>Sources:</strong><br>" +
+        data.sources.map((name) => `• ${name}`).join("<br>");
+      chatBox.appendChild(sourcesDiv);
+    }
 
-    const sourcesList = document.createElement("ul");
-    data.sources.forEach(source => {
-      const listItem = document.createElement("li");
-      listItem.innerText = `Document: ${source.document_name}, Chunk ID: ${source.chunk_id}`;
-      sourcesList.appendChild(listItem);
-    });
-
-    sourcesDiv.appendChild(sourcesList);
-    chatBox.appendChild(sourcesDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
 
     console.log(`Question: ${userText}`);
