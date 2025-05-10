@@ -35,6 +35,9 @@ A web-based application that lets you upload PDF files and ask questions about t
 
 ### Sample Answer with Source
 ![Sample Answer](assets/Chat.png)
+
+---
+
 ## Running Ollama Model Server Locally
 
 This project relies on Ollama to serve both the language model (e.g., `mistral`) and the embedding model (e.g., `nomic-embed-text`) locally. Follow these steps to set up and run the Ollama Models:
@@ -60,7 +63,7 @@ ollama pull mistral
 ollama pull nomic-embed-text
 ```
 
-
+---
 
 ## Getting Started
 
