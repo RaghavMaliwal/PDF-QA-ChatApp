@@ -150,8 +150,14 @@ async def query_api(request: Request):
     # You can map document IDs to more descriptive names if needed
     document_info = {source: {"document_name": source.split(":")[0], "chunk_id": source.split(":")[1]} for source in
                      sources}
-    print(f"Document Info: {document_info}")
-    source = [f"{info['document_name']} (Chunk {info['chunk_id']})" for info in document_info.values()]
 
+    source = [f"{info['document_name']} (Chunk {info['chunk_id']})" for info in document_info.values()]
+    print(f"Document Info: {source}")
     # Return the answer along with the document source information
-    return JSONResponse(content={"response": response, "sources": source})
+    # Extract unique PDF names
+    unique_pdf_names = list(set(info['document_name'] for info in document_info.values()))
+
+# Return only the response and PDF names
+    return JSONResponse(content={"response": response, "sources": unique_pdf_names})
+
+    #return JSONResponse(content={"response": response, "sources": source})
