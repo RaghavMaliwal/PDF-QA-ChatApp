@@ -2,6 +2,9 @@
 
 A web-based application that lets you upload PDF files and ask questions about their content. The app semantically chunks your PDFs, embeds them using advanced language models, and retrieves relevant information to answer your queries in natural language.
 
+
+**Video Demo:** [https://youtu.be/wY44jCt-nKk](https://youtu.be/wY44jCt-nKk)
+
 ---
 
 ## Features
